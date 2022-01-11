@@ -118,7 +118,7 @@ int main_struct1(void)
 	GAME_INFO game2;
 	game2.name = "한글 게임2";
 	game2.year = 2014;
-
+ 
 /*
 	struct GameInformation game3;
 	game3.name = "한글 게임3";
