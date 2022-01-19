@@ -1,7 +1,8 @@
 #pragma warning(disable: 4996)
 #include "stdio.h"
 
-int main(void)
+
+int main()
 {
  /*	int n,i,j;
 	int num,blank = 0;
@@ -137,16 +138,230 @@ int main(void)
 */
 
 	
-	int num;
+/*
+	int inputNum=0;
+	int divNum=2;
+	bool flgSoSu=false;
 
-	printf("임의의 자연수를 입력하시오 :");
-	scanf("%d", &num);
-
-	for(int i=0; i<num; i++)
+	printf("Input number");
+	scanf("%d", &inputNum);
+	int rest=inputNum;
+	printf("%d=", inputNum);
+	while(rest>1)
 	{
+		while(rest%divNum==0)
+		{
+			printf("%d", divNum);
+			rest=rest/divNum;
+			if(rest>1)
+			{
+				printf("*");
+			}
+		}
+		//Next SoSu
+		flgSoSu=false;
+		while(!flgSoSu)
+		{
+			divNum++;
+ 			flgSoSu=true;
+// 			for(int i=2; i<divNum-1;i++)
+// 			{
+// 				if(divNum%i==0)
+// 				{
+// 					flgSoSu=false;
+// 					break;
+// 				}
+			}
+		}
+	}
+*/
+
+
+/*
+	int inputNum=0;
+	int divNum=2;
+	bool SoSu= false;
+
+	printf("Input number :");
+	scanf("%d", &inputNum);	
+	printf("%d=", inputNum);
+	int rest=inputNum;
+	while(rest>1)
+	{
+		while(rest%divNum==0)
+		{
+			printf("%d", divNum);
+			rest=rest/divNum;
+
+			if(rest>1)
+			{
+				printf("*");
+			}
+		}
+
+		SoSu=false;
+		while(!SoSu)
+		{
+			divNum++;
+			SoSu=true;
+		}
+	}
+*/
+
+/*
+	int i;
+	float f;
+
+	printf("실수를 입력하시오 : ");
+	scanf("%f",&f);
+	i= (int)((f-(int)f)*100);
+
+	printf("i=%d\n",i);
+*/
+
+	/* 친구의 부탁 */
+
+/*
+	int arr[10];
+	int i,ave=0;
+	for(i=0;i<10;i++)
+	{
+		printf(" %d번째 학생의 성적은?", i+1);
+		scanf("%d", &arr[i]);
+	}
+	for(i=0;i<10;i++)
+	{
+		ave=ave+arr[i];
+	}
+	ave=ave/10;
+	printf("전체 학생의 평균 : %d\n", ave);
+	for(i=0;i<10;i++)
+	{
+		printf("학생 %d:",i+1);
+		if(arr[i]>= ave)
+			printf("합격\n");
+		else
+			printf("불합격\n");
+	}
+*/
+
+	
+/*
+	int arr[10];
+	int i,k, ave=0;
+	int j=0;
+	int h=0;
+	int temp;
+	int level[10];
+	for(i=0;i<10;i++)
+	{
+		printf("%d번 학생의 성적은? ",i+1);
+		scanf("%d", &arr[i]);
+		
 
 	}
+
+
+
+	for(i=0;i<10;i++)
+	{
+		ave=ave+arr[i];
+	}
+	ave=ave/10;
+	printf("전체 학생의 평균은 : %d \n", ave);
+	for(i=0;i<10;i++)
+	{
 	
+		printf("학생 %d : ", i+1);
+		if(arr[i]>=ave)
+		{
+			printf("합격\n");
+		}
+		else
+		{
+			printf("불합격\n");
+		}
+	}
+
+	printf("성적순 나열\n");
+ 	for(k=1;k<=10;k++)
+ 	{
+		for(i=0;i<9;i++)
+		{
+			if(arr[i]<arr[i+1])
+			{
+				temp=arr[i];
+				arr[i]=arr[i+1];
+				arr[i+1]=temp;
+				
+			}
+		}
+ 	}
+	for(i=0;i<10;i++)
+	{
+		printf("%d등 %d번 학생의 성적:%d\n",i+1,level[i],arr[i]);
+	}*/
+
+ 
+
+
+	int index=0;
+
+
+	printf("학급의 학생이 몇명 인가요?");
+	scanf("%d", &index);
+
+	//
+
+	int i, j, k, l; // for문 조건변수
+	int students[10];
+	for (i = 1; i <= index; i++) {
+		printf( "%d 번 학생의 점수는 몇점입니까? : ", i);
+		scanf("%d", &students[i-1]);
+	}
+
+	printf("\n 입력 받은 성적\n");
+	for (i = 1; i <= index; i++) {
+		printf("%d 번 학생 : %d 점\n", i, students[i-1]);
+	}
+
+
+	int students_ordered[10 * 2];
+
+	for (i = 1; i <= index * 2; i++) {
+		students_ordered[i-1] = 0;
+	}
+
+	for (i = 1; i <= index; i++) {
+		for (j = 1; j <= index * 2; j += 2) {
+			if (students[i-1] > students_ordered[j - 1]) {
+				for(k = index * 2; k / 2 > (j + 1) / 2 ; k -= 2) {
+					students_ordered[k-1] = students_ordered[k-3];
+					students_ordered[k-2] = students_ordered[k-4];
+				}
+				students_ordered[j-1] = students[i-1];
+				students_ordered[j] = i;
+
+				break;
+			}
+		}
+	}
+
+	printf("\n 오름 차순 성적\n");
+	for (i = 1; i <= index * 2; i += 2) {
+		printf("%d 등, %d 번 학생 : %d 점\n", (i + 1) / 2, students_ordered[i], students_ordered[i-1]);
+		printf(" → ");
+		for(l = 1; l <= students_ordered[i-1] / 5; l ++) {
+			if (l % 2 == 0) {
+				printf("●");
+			} else {
+				printf("○");
+			}
+		}
+		printf("\n");
+	}
+
+
 
 
 
